@@ -6,11 +6,8 @@ import { limiter } from '../src/middelware/rateLimiter.js';
 import  initDatabaseConnection  from "../src/db/config.js"
 import userRoutes from './users/users.routes.js';
 import authRoutes from '../src/Auth/auth.routes.js';
-// import restaurantRoutes from '../src/restaurant/restaurant.routes.js';
-// import categoryRoutes from '../src/categories/categories.routes.js';
-// import menuItemRoutes from '../src/menuItems/menuItems.routes.js';
-// import orderRoutes from './orders/orders.routes.js';
-// import orderItemRoutes from '../src/orderItems/ordersItems.routes.js';
+import orderRoutes from './orders/orders.routes.js';
+import orderItemRoutes from '../src/orderItems/ordersItems.routes.js';
 
 
 const app = new Hono();
@@ -37,9 +34,6 @@ app.get('/', (c) => {
     version: '1.0.0',
     endpoints: {
       users: '/api/users',
-      restaurants: '/api/restaurants',
-      categories: '/api/categories',
-      menuItems: '/api/menu-items',
       orders: '/api/orders',
       orderItems: '/api/order-items'
     }
@@ -49,11 +43,9 @@ app.get('/', (c) => {
 // Mount API routes
 app.route("/api", userRoutes);
 app.route("/api", authRoutes);
-// app.route("/api", restaurantRoutes);
-// app.route("/api", categoryRoutes);
-// app.route("/api", menuItemRoutes);
-// app.route("/api", orderRoutes);
-// app.route("/api", orderItemRoutes);
+app.route("/api", orderRoutes);
+app.route("/api", orderItemRoutes);
+
 
 // 404 handler
 app.notFound((c: Context) => {
