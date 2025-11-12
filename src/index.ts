@@ -8,7 +8,9 @@ import userRoutes from './users/users.routes.js';
 import authRoutes from '../src/Auth/auth.routes.js';
 import orderRoutes from './orders/orders.routes.js';
 import orderItemRoutes from '../src/orderItems/ordersItems.routes.js';
-
+import categoriesRoutes from '../src/categories/categories.routes.js';
+import menuItemsRoutes from '../src/menuItems/menuItems.routes.js';
+import restaurantRoutes from '../src/restaurant/restaurant.routes.js';
 
 const app = new Hono();
 
@@ -45,6 +47,9 @@ app.route("/api", userRoutes);
 app.route("/api", authRoutes);
 app.route("/api", orderRoutes);
 app.route("/api", orderItemRoutes);
+app.route("/api", categoriesRoutes);
+app.route("/api", menuItemsRoutes);
+app.route("/api", restaurantRoutes);
 
 
 // 404 handler
